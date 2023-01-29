@@ -1,0 +1,15 @@
+server:
+  port: 7000
+spring:
+  config:
+    import:
+      - optional:file:./variables-local.properties
+  datasource:
+    username: ${POSTGRS_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: ${POSGRES_URL}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

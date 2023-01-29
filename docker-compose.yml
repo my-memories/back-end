@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  postgresdb:
+    image: postgres:15-alpine
+    restart: always
+    container_name: posgres_mymemories
+    volumes:
+      - ./postgres-docker:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: my-memories
+      POSTGRES_PASSWORD: mymemories
+      POSTGRES_DB: my_memories_db
+    ports:
+      - '5434:5432'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
