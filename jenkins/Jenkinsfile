@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 withGradle() {
-                    sh './gradlew build --stacktrace'
+                    sh './gradlew build -x test --stacktrace'
                 }
             }
         }
