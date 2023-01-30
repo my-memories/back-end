@@ -29,19 +29,19 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                withGradle() {
+                    echo 'Executing process to build the application'
+                    sh './gradlew assemble'
+                }
+            }
+        }
         stage('Unit tests') {
             steps {
                 echo 'Executing unit testing'
                 withGradle() {
                     sh './gradlew test --stacktrace'
-                }
-            }
-        }
-        stage('Build') {
-            steps {
-                withGradle() {
-                    echo 'Executing process to build the application'
-                    sh './gradlew build -x test --stacktrace'
                 }
             }
         }
