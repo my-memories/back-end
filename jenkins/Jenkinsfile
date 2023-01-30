@@ -1,37 +1,45 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {
-        gradle 'Gradle-7.6'
-    }
     stages {
         stage('Permission gradle') {
             steps {
                 echo 'Given all permissions for gradle'
-                sh 'chmod 777 ./gradlew'
+                withGradle() {
+                    sh 'chmod 777 ./gradlew'
+                }
             }
         }
         stage('Check gradle version') {
             steps {
                 echo 'Check gradle version'
-                sh './gradlew --version'
+                withGradle() {
+                    sh './gradlew --version'
+                }
+            }
         }
         stage('Lint') {
             steps {
                 echo 'executing lint format'
-                sh './gradlew ktlintFormat'
+                withGradle() {
+                    sh './gradlew ktlintFormat'
+                }
             }
         }
         stage('Unit tests') {
             steps {
                 echo 'Executing unit testing'
-                sh './gradlew test --stacktrace'
+                withGradle() {
+                    sh './gradlew test --stacktrace'
+                }
             }
         }
         stage('Build') {
             steps {
-                echo 'Executing process to build the application'
-                sh './gradlew build -x test --stacktrace'
+                withGradle() {
+                    echo 'Executing process to build the application'
+                    sh './gradlew build -x test --stacktrace'
+                }
             }
         }
     }
