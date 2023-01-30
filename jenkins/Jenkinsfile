@@ -33,7 +33,7 @@ pipeline {
             step {
                 echo 'Starting process info'
                 withGradle() {
-                    sh(script: "/bin/bash -c './gradlew --info')
+                    sh(script: "/bin/bash -c './gradlew --info'")
                 }
             }
         }
