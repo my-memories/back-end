@@ -41,8 +41,6 @@ pipeline {
             steps {
                 echo 'Executing docker compose'
                 sh 'docker compose up -d'
-            }
-            steps {
                 echo 'Executing unit testing'
                 withGradle() {
                     sh './gradlew test --stacktrace'
