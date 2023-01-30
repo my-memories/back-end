@@ -1,6 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent any
+    agent { label 'linux' }
+    tools {
+        gradle '7.6'
+    }
     stages {
         stage('Permission gradle') {
             steps {
