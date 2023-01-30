@@ -29,6 +29,14 @@ pipeline {
                 }
             }
         }
+        stage('Info') {
+            step {
+                echo 'Starting process info'
+                withGradle() {
+                    sh(script: "/bin/bash -c './gradlew --info')
+                }
+            }
+        }
         stage('Build') {
             steps {
                 withGradle() {
@@ -42,15 +50,6 @@ pipeline {
                 echo 'Executing unit testing'
                 withGradle() {
                     sh './gradlew test --stacktrace'
-                }
-            }
-        }
-
-        stage('Info') {
-            step {
-                echo 'Starting process info'
-                withGradle() {
-                    sh(script: "/bin/bash -c './gradlew --info')
                 }
             }
         }
