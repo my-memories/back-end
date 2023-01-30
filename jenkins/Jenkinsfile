@@ -29,14 +29,6 @@ pipeline {
                 }
             }
         }
-        stage('Info') {
-            step {
-                echo 'Starting process info'
-                withGradle() {
-                    sh(script: "/bin/bash -c './gradlew --info'")
-                }
-            }
-        }
         stage('Build') {
             steps {
                 withGradle() {
