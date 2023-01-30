@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Check gradle version'
                 withGradle() {
-                    sh 'gradle --version'
+                    sh './gradlew --version'
                 }
             }
         }
