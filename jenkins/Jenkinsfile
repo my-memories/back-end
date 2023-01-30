@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo 'Executing unit testing'
                 withGradle() {
-                    sh './gradlew test'
+                    sh './gradlew test --stacktrace'
                 }
             }
         }
