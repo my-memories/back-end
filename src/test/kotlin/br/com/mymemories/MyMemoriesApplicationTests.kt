@@ -1,3 +1,0 @@
-package br.com.mymemories
-
-class MyMemoriesApplicationTests
