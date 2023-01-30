@@ -2,14 +2,6 @@
 pipeline {
     agent any
     stages {
-        stage('Lint') {
-            steps {
-                echo 'executing lint format'
-                withGradle() {
-                    sh './gradlew ktlintFormat'
-                }
-            }
-        }
         stage('Test') {
             steps {
                 withGradle() {
