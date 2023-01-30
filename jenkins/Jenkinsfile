@@ -13,14 +13,14 @@ pipeline {
         stage('Test') {
             steps {
                 withGradle() {
-                    sh "./gradlew test"
+                    sh './gradlew test'
                 }
             }
         }
         stage('Build') {
             steps {
                 withGradle() {
-                    sh "./gradlew clean build"
+                    sh './gradlew clean build'
                 }
             }
         }
