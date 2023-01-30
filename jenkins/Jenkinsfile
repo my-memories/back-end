@@ -2,6 +2,14 @@
 pipeline {
     agent any
     stages {
+        stage('Permission gradle') {
+            steps {
+                echo 'Given all permissions for gradle'
+                withGradle() {
+                    sh 'chmod 777 ./gradlew'
+                }
+            }
+        }
         stage('Check gradle version') {
             steps {
                 echo 'Check gradle version'
@@ -15,6 +23,14 @@ pipeline {
                 echo 'executing lint format'
                 withGradle() {
                     sh './gradlew ktlintFormat'
+                }
+            }
+        }
+        stage('Unit tests') {
+            steps {
+                echo 'Executing unit testing'
+                withGradle() {
+                    sh './gradlew test'
                 }
             }
         }
