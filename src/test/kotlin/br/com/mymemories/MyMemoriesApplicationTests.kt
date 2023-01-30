@@ -9,5 +9,4 @@ class MyMemoriesApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

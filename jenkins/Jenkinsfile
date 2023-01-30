@@ -2,20 +2,28 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('Lint') {
             agent {
-                docker { image 'maven' }
+                docker { image 'gradle' }
             }
             steps {
-                sh "mvn package -Dmaven.test.skip=true"
+                sh "./gradlew ktlintFormat "
             }
         }
         stage('Test') {
             agent {
-                docker { image 'maven' }
+                docker { image 'gradle' }
             }
             steps {
-                sh "mvn test"
+                sh "./gradlew test"
+            }
+        }
+        stage('Build') {
+            agent {
+                docker { image 'gradle' }
+            }
+            steps {
+                sh "./gradlew clean build -x test"
             }
         }
     }

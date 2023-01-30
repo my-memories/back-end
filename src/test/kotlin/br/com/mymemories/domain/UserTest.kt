@@ -9,7 +9,7 @@ class UserTest {
 
     @Test
     fun testInstanceOfUser() {
-        val user = User()
+        val user = User("Eduarda")
 
         Assertions.assertNotNull(user)
     }

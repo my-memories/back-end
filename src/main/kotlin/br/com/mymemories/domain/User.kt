@@ -1,4 +1,5 @@
 package br.com.mymemories.domain
 
-class User {
-}
+data class User(
+    val nome: String
+)
