@@ -2,6 +2,14 @@
 pipeline {
     agent any
     stages {
+        stage('Check gradle version') {
+            steps {
+                echo 'Check gradle version'
+                withGradle() {
+                    sh 'gradle --version'
+                }
+            }
+        }
         stage('Lint') {
             steps {
                 echo 'executing lint format'
